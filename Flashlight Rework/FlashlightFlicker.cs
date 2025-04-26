@@ -2,9 +2,8 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 using System.Collections;
-using System.Linq;
 
-public static class FlashlightFlicker
+public static class FlashlightFlickerPatch
 {
     [HarmonyPatch(typeof(FlashlightController), nameof(FlashlightController.Start))]
     public static class Patch_FlashlightController_Start
@@ -50,13 +49,18 @@ public static class FlashlightFlicker
                 {
                     // faster blink when enemy is closer
                     float blinkSpeed = Mathf.Lerp(0.5f, 0.1f, (detectionRadius - closest) / detectionRadius);
-                    flashlight.spotlight.enabled = !flashlight.spotlight.enabled;
+                    bool isOn = !flashlight.spotlight.enabled;
+                    flashlight.spotlight.enabled = isOn;
+                    flashlight.halo.enabled = isOn;
                     yield return new WaitForSeconds(blinkSpeed);
                 }
                 else
                 {
                     if (!flashlight.spotlight.enabled)
+                    {
                         flashlight.spotlight.enabled = true;
+                        flashlight.halo.enabled = true;
+                    }
                     yield return new WaitForSeconds(scanInterval);
                 }
             }
