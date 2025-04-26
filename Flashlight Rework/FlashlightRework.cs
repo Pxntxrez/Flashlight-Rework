@@ -3,15 +3,18 @@ using HarmonyLib;
 using UnityEngine;
 using System;
 using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
-[BepInPlugin("com.PxntxrezStudio.FlashlightRework", "Flashlight Rework", "1.0.0")]
-public class FlashlightAnimatedTogglePlugin : BaseUnityPlugin
+[BepInPlugin("PxntxrezStudio.RepoFlashlightRework", "REPO Flashlight Rework", "1.1.0")]
+public class FlashlightReworkPlugin : BaseUnityPlugin
 {
     private Harmony _harmony = null!;
 
     void Awake()
     {
-        _harmony = new Harmony("com.PxntxrezStudio.FlashlightRework");
+        _harmony = new Harmony("PxntxrezStudio.RepoFlashlightRework");
         _harmony.PatchAll();
     }
 
@@ -28,13 +31,22 @@ static class Patch_FlashlightController_Update
     static readonly FieldInfo fiIntroYLerp    = AccessTools.Field(typeof(FlashlightController), "introYLerp");
     static readonly FieldInfo fiClick         = AccessTools.Field(typeof(FlashlightController), "click");
 
+    static readonly Dictionary<FlashlightController, float> lastToggle = new();
+    const float toggleCooldown = 1.1f;
+
     static bool Prefix(FlashlightController __instance)
     {
-        if (!__instance.PlayerAvatar.isLocal) 
+        if (!__instance.PlayerAvatar.isLocal)
             return true;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        float last;
+        bool canToggle = !lastToggle.TryGetValue(__instance, out last)
+                         || Time.time - last >= toggleCooldown;
+
+        if (Input.GetKeyDown(KeyCode.F) && canToggle)
         {
+            lastToggle[__instance] = Time.time;
+
             if (!__instance.LightActive)
             {
                 fiCurrentState.SetValue(__instance, Enum.Parse(fiCurrentState.FieldType, "Intro"));
