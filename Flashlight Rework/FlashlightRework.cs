@@ -32,7 +32,7 @@ static class Patch_FlashlightController_Update
     static readonly FieldInfo fiClick         = AccessTools.Field(typeof(FlashlightController), "click");
 
     static readonly Dictionary<FlashlightController, float> lastToggle = new();
-    const float toggleCooldown = 1.1f;
+    const float toggleCooldown = 1.3f;
 
     static bool Prefix(FlashlightController __instance)
     {
