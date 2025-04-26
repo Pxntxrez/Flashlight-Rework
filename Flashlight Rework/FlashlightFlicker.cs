@@ -49,7 +49,7 @@ public static class FlashlightFlicker
                 if (found)
                 {
                     // faster blink when enemy is closer
-                    float blinkSpeed = Mathf.Lerp(0.1f, 0.5f, (detectionRadius - closest) / detectionRadius);
+                    float blinkSpeed = Mathf.Lerp(0.5f, 0.1f, (detectionRadius - closest) / detectionRadius);
                     flashlight.spotlight.enabled = !flashlight.spotlight.enabled;
                     yield return new WaitForSeconds(blinkSpeed);
                 }
