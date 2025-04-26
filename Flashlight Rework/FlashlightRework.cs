@@ -6,16 +6,30 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using REPOConfig;
+using BepInEx.Configuration;
 
 [BepInPlugin("PxntxrezStudio.RepoFlashlightRework", "REPO Flashlight Rework", "1.1.0")]
 public class FlashlightReworkPlugin : BaseUnityPlugin
 {
     private Harmony _harmony = null!;
 
+    // Config Entry here
+    public static ConfigEntry<int> LightColorRed;
+    public static ConfigEntry<int> LightColorBlue;
+    public static ConfigEntry<int> LightColorGreen;
+
+
     void Awake()
     {
         _harmony = new Harmony("PxntxrezStudio.RepoFlashlightRework");
         _harmony.PatchAll();
+
+        LightColorRed = Config.Bind("Light Color", "Red", 0, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
+        LightColorBlue = Config.Bind("Light Color", "Blue", 0, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
+        LightColorGreen = Config.Bind("Light Color", "Green", 0, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
+        
+        Logger.LogInfo($"{Info.Metadata.GUID} v{Info.Metadata.Version} has loaded!");
     }
 
     void OnDestroy()
@@ -26,10 +40,10 @@ public class FlashlightReworkPlugin : BaseUnityPlugin
 static class Patch_FlashlightController_Update
 {
     static readonly FieldInfo fiCurrentState = AccessTools.Field(typeof(FlashlightController), "currentState");
-    static readonly FieldInfo fiStateTimer    = AccessTools.Field(typeof(FlashlightController), "stateTimer");
-    static readonly FieldInfo fiIntroRotLerp  = AccessTools.Field(typeof(FlashlightController), "introRotLerp");
-    static readonly FieldInfo fiIntroYLerp    = AccessTools.Field(typeof(FlashlightController), "introYLerp");
-    static readonly FieldInfo fiClick         = AccessTools.Field(typeof(FlashlightController), "click");
+    static readonly FieldInfo fiStateTimer   = AccessTools.Field(typeof(FlashlightController), "stateTimer");
+    static readonly FieldInfo fiIntroRotLerp = AccessTools.Field(typeof(FlashlightController), "introRotLerp");
+    static readonly FieldInfo fiIntroYLerp   = AccessTools.Field(typeof(FlashlightController), "introYLerp");
+    static readonly FieldInfo fiClick        = AccessTools.Field(typeof(FlashlightController), "click");
 
     static readonly Dictionary<FlashlightController, float> lastToggle = new();
     const float toggleCooldown = 1.3f;
@@ -38,7 +52,6 @@ static class Patch_FlashlightController_Update
     {
         if (!__instance.PlayerAvatar.isLocal)
             return true;
-
         float last;
         bool canToggle = !lastToggle.TryGetValue(__instance, out last)
                          || Time.time - last >= toggleCooldown;
@@ -73,6 +86,12 @@ static class Patch_FlashlightController_Update
         {
             AccessTools.Field(typeof(FlashlightController), "active")
                        .SetValue(__instance, true);
+
+            __instance.spotlight.color = new Color(
+                FlashlightReworkPlugin.LightColorRed.Value / 255f,
+                FlashlightReworkPlugin.LightColorGreen.Value / 255f,
+                FlashlightReworkPlugin.LightColorBlue.Value / 255f
+            );
         }
     }
 }
