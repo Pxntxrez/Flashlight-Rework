@@ -3,7 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 using System.Collections;
 
-public static class FlashlightFlickerPatch
+public static class FlashlightFlicker
 {
     [HarmonyPatch(typeof(FlashlightController), nameof(FlashlightController.Start))]
     public static class Patch_FlashlightController_Start
