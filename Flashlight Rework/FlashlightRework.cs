@@ -25,9 +25,9 @@ public class FlashlightReworkPlugin : BaseUnityPlugin
         _harmony = new Harmony("PxntxrezStudio.RepoFlashlightRework");
         _harmony.PatchAll();
 
-        LightColorRed = Config.Bind("Light Color", "Red", 0, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
-        LightColorBlue = Config.Bind("Light Color", "Blue", 0, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
-        LightColorGreen = Config.Bind("Light Color", "Green", 0, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
+        LightColorRed = Config.Bind("Light Color", "Red", 255, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
+        LightColorBlue = Config.Bind("Light Color", "Blue", 255, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
+        LightColorGreen = Config.Bind("Light Color", "Green", 255, new ConfigDescription("", new AcceptableValueRange<int>(0, 255)));
         
         Logger.LogInfo($"{Info.Metadata.GUID} v{Info.Metadata.Version} has loaded!");
     }
