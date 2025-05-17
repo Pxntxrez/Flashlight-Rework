@@ -85,4 +85,4 @@ After first launch, edit `BepInEx/config/PxntxrezStudio.RepoFlashlightRework.cfg
 
 | **Discord Server** | **Channel** | **Post** |  
 |--------------------|-----------|----------|  
-| [R.E.P.O. Modding Server](https://discord.com/invite/vPJtKhYAFe) | `#released-mods` | [Flashlight Rework](https://discord.com/channels/1344557689979670578/1366740609376976918) |
+| [R.E.P.O. Modding Server](https://discord.com/invite/vPJtKhYAFe) | `#released-mods` | [Flashlight Rework](https://discord.com/channels/1344557689979670578/1373346159883714662) |
