@@ -1,4 +1,3 @@
----
 
 ## ⚠️ IMPORTANT NOTICE: CLIENT-SIDE MOD ⚠️  
 **This mod is entirely client-side and does not affect gameplay or networking.**  
