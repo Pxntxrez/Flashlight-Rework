@@ -6,8 +6,8 @@ Other players do **not** need to install it for it to work properly in multiplay
 ---
 
 [![Thunderstore Profile](https://img.shields.io/badge/Thunderstore-Profile-4065F2?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/PxntxrezStudio/)
-[![Thunderstore Version](https://img.shields.io/thunderstore/v/PxntxrezStudio/ValuableInspector?style=for-the-badge&logo=thunderstore&logoColor=white&color=40c4ff)](https://thunderstore.io/c/repo/p/PxntxrezStudio/ValuableInspector/)
-[![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/PxntxrezStudio/ValuableInspector?style=for-the-badge&logo=thunderstore&logoColor=white&color=00e111)](https://thunderstore.io/c/repo/p/PxntxrezStudio/ValuableInspector/)
+[![Thunderstore Version](https://img.shields.io/thunderstore/v/PxntxrezStudio/FlashlightRework?style=for-the-badge&logo=thunderstore&logoColor=white&color=40c4ff)](https://thunderstore.io/c/repo/p/PxntxrezStudio/FlashlightRework/)
+[![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/PxntxrezStudio/FlashlightRework?style=for-the-badge&logo=thunderstore&logoColor=white&color=00e111)](https://thunderstore.io/c/repo/p/PxntxrezStudio/FlashlightRework/)
 
 ---
 
