@@ -1,4 +1,3 @@
-
 ## ⚠️ IMPORTANT NOTICE: CLIENT-SIDE MOD ⚠️  
 **This mod is entirely client-side and does not affect gameplay or networking.**  
 Other players do **not** need to install it for it to work properly in multiplayer.
@@ -49,7 +48,7 @@ Other players do **not** need to install it for it to work properly in multiplay
   - The flashlight won’t turn off when you’re crouching, tumbling, or sliding.
 
 - **Enemy-Proximity Flicker**  
-  When an enemy comes within a 12-meter radius, the flashlight begins to flicker - speeding up as they get closer.
+  When an enemy comes within a 15-meter radius, the flashlight begins to flicker - speeding up as they get closer.
 
 - **Configurable Flashlight Color**  
   Adjust the flashlight’s RGB color values (0–255) via the built-in REPOConfig menu.
@@ -74,9 +73,24 @@ After first launch, edit `BepInEx/config/PxntxrezStudio.RepoFlashlightRework.cfg
 
 | Setting | Description | Default |
 |--------|-------------|---------|
-| `LightColorRed` | Red component of light color. | `255` |
-| `TextColorGreen` | Green component of light color. | `255` |
-| `LightColorBlue` | Blue component of light color. | `255` |
+| `UseCustomRGB` | Toggle custom RGB color. | `false` |
+| `Red` | Red component of light color. | `255` |
+| `Green` | Green component of light color. | `255` |
+| `Blue` | Blue component of light color. | `255` |
+
+---
+
+### 🔹 Keybinds
+| Setting | Description | Default |
+|--------|-------------|---------|
+| `Toggle Key` | Key to toggle flashlight. | `F` |
+
+---
+
+### 🔹 Flicker Settings
+| Setting | Description | Default |
+|--------|-------------|---------|
+| `Enable Flicker` | Enables flickering when enemy is nearby. | `True` |
 
 ---
 
