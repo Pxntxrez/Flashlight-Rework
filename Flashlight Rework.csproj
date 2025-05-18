@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -28,14 +28,4 @@
     <PackageReference Include="R.E.P.O.GameLibs.Steam" Version="*-*" PrivateAssets="all" Publicize="true" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Reference Include="REPOConfig">
-      <HintPath>libs/REPOConfig.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
-
-</Project>
-
